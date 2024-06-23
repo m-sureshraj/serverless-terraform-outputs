@@ -1,0 +1,30 @@
+{
+  "name": "serverless-terraform-outputs",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "checkTypes": "tsc --noEmit",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prettier": "@sureshraj/prettier-config",
+  "devDependencies": {
+    "@sureshraj/prettier-config": "^1.0.0",
+    "@types/node": "^20.14.8",
+    "@types/serverless": "^3.12.22",
+    "esm": "^3.2.25",
+    "prettier": "^3.3.2",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "serverless": ">=3"
+  }
+}

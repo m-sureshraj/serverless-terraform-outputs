@@ -1,0 +1,8 @@
+{
+  "name": "@halfstack/serverless-terraform-outputs",
+  "version": "0.0.1",
+  "exports": "./dist/index.js",
+  "publish": {
+    "include": ["dist"]
+  }
+}
