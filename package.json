@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "prettier": "@sureshraj/prettier-config",
   "devDependencies": {
     "@sureshraj/prettier-config": "^1.0.0",
