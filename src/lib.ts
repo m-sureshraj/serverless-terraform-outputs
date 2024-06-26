@@ -1,8 +1,6 @@
 import { execSync } from 'node:child_process';
 
-import type Serverless from 'serverless';
-
-import type { TerraformOutputs, PluginOptions, RootLevelValue } from './types.js';
+import type { TerraformOutputs, PluginOptions, RootLevelValue, Serverless } from './types.js';
 
 export function getTerraformOutputs(path: string) {
   const outputs = execSync('terraform output -json', { cwd: path }).toString('utf-8');
