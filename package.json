@@ -2,12 +2,13 @@
   "name": "serverless-terraform-outputs",
   "version": "0.0.0",
   "private": true,
-  "description": "",
+  "description": "Serverless plugin to reference outputs from Terraform",
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "checkTypes": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "//": "matching tests inside the nested folder requires workaround - see https://github.com/nodejs/help/issues/3902#issuecomment-1809746747",
+    "test": "tsx --test ./src/*.test.ts"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -19,8 +20,8 @@
   "devDependencies": {
     "@sureshraj/prettier-config": "^1.0.0",
     "@types/node": "^20.14.8",
-    "esm": "^3.2.25",
     "prettier": "^3.3.2",
+    "tsx": "^4.15.7",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {

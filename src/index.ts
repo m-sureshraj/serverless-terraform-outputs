@@ -1,5 +1,5 @@
-import { getPluginOptions, getTerraformOutputs, pick } from './lib.js';
-import { Plugin, Serverless } from './types.js';
+import { getPluginOptions, getTerraformOutputs, pick } from './lib';
+import { Plugin, Serverless } from './types';
 
 // https://www.serverless.com/framework/docs/guides/plugins
 export default class ServerlessTerraformOutputs implements Plugin {
