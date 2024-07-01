@@ -1,9 +1,16 @@
-import { execSync } from 'node:child_process';
+import childProcess from 'node:child_process';
 
-import type { TerraformOutputs, PluginOptions, RootLevelValue, Serverless } from './types.js';
+import type {
+  TerraformOutputs,
+  PluginOptions,
+  RootLevelValue,
+  Serverless,
+} from './types';
 
 export function getTerraformOutputs(path: string) {
-  const outputs = execSync('terraform output -json', { cwd: path }).toString('utf-8');
+  const outputs = childProcess
+    .execSync('terraform output -json', { cwd: path })
+    .toString('utf-8');
 
   const parsed: TerraformOutputs = JSON.parse(outputs);
   if (Object.keys(parsed).length === 0) {
@@ -26,7 +33,7 @@ export function getPluginOptions(serverless: Serverless): PluginOptions {
   };
 }
 
-function isObject(value: unknown): value is Record<string, unknown> {
+export function isObject(value: unknown): value is Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) {
     return false;
   }
@@ -48,6 +55,7 @@ export function pick(
 ): unknown {
   const [part, ...remainingPath] = attributePath.split('.');
 
+  // Terraform outputs can't have `undefined` values, so checking attribute existence like this is okay
   if (sourceObject[part] === undefined) {
     const path = accumulatedPath.length
       ? `in path: ${accumulatedPath.join('.')}`
@@ -70,10 +78,16 @@ export function pick(
     return pick(remainingPath.join('.'), currentValue, false, [...accumulatedPath, part]);
   }
 
-  // if the current value is a non-object but an attribute is picked from it, throw error.
+  // If the current value is a non-object but an attribute is picked from it, throw error.
   if (!isValueObject && remainingPath.length > 0) {
+    if (Array.isArray(currentValue)) {
+      throw new Error(
+        `Picking attributes from arrays is not supported. Picked attribute: ${remainingPath[0]} in ${part}`
+      );
+    }
+
     throw new Error(
-      `Could not find the attribute: ${part} from the non object value: ${currentValue}, type: ${typeof currentValue}`
+      `Could not find the attribute: ${remainingPath[0]} from the non object value: ${currentValue}, type: ${typeof currentValue}`
     );
   }
 
