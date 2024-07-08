@@ -5,11 +5,11 @@
 #### At a Glance
 
 - It allows nested attributes to be picked from objects.
-- It doesn't support picking items from arrays.
 - The picked attribute must be a non-null value.
+- It doesn't support picking items from arrays.
 - It's an ESM-only module.
 
-> Referencing Terraform outputs in Serverless has been addressed multiple times using various approaches and package names. 
+> Referencing Terraform outputs in Serverless Framework has been addressed multiple times using various approaches and package names.
 > This is my attempt to solve the problem with what I believe is the fastest implementation. 
 > Additionally, I aimed to maintain it as an ESM-only module in the [JavaScript Registry](https://jsr.io/).
 
@@ -24,7 +24,7 @@
 This plugin is an ESM-only module available on the [JavaScript Registry](https://jsr.io/) for the Node.js runtime.
 
 ```bash
-npx jsr add --save-dev  @halfstack/serverless-terraform-outputs@0.0.4
+npx jsr add --save-dev  @halfstack/serverless-terraform-outputs
 ```
 
 Add the plugin to your `serverless.yml` configuration:
