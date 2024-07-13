@@ -2,16 +2,17 @@
 
 [Serverless framework](https://www.serverless.com/) plugin to reference outputs from Terraform.
 
+> [!NOTE]
+> The Serverless Framework v4 offers a feature, [Terraform Variable Resolver](https://www.serverless.com/framework/docs/guides/variables/terraform#resolvers-in-serverless-framework-v4),
+> which allows you to directly reference Terraform outputs in the `serverless.yml` file without needing a plugin.
+> I recommend using this feature instead of relying on a plugin.
+
 #### At a Glance
 
 - It allows nested attributes to be picked from objects.
 - The picked attribute must be a non-null value.
 - It doesn't support picking items from arrays.
 - It's an ESM-only module.
-
-> Referencing Terraform outputs in Serverless Framework has been addressed multiple times using various approaches and package names.
-> This is my attempt to solve the problem with what I believe is the fastest implementation. 
-> Additionally, I aimed to maintain it as an ESM-only module in the [JavaScript Registry](https://jsr.io/).
 
 ## Pre-requisites
 
